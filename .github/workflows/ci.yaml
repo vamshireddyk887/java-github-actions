@@ -1,0 +1,22 @@
+name: Java CICD Pipeline
+on:
+#   push:
+#     branches: [ main ]
+#   pull_request:
+#     # The branches below must be a subset of the branches above
+#     branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'The branch to build'
+        required: true
+      environment:
+        description: 'The environment to deploy to'
+        required: false
+jobs:
+  checkersion:
+    runs-on: ubuntu-latest
+    steps:
+    - run: |
+        echo "Log level: ${{ github.event.inputs.branch }}"
+        echo "Tags: ${{ github.event.inputs.environment }}" 
