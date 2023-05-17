@@ -15,9 +15,12 @@ on:
         required: false
 jobs:
   checkersion:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-22.04, ubuntu-20.04]
+        version: [10, 12, 14]
+    runs-on: ${{ matrix.os }}
     steps:
-    - run: |
-        mvn --version
-        java --version
-        echo "Tags: ${{ github.event.inputs.environment }}" 
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.version }}
