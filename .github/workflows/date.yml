@@ -2,6 +2,7 @@ name: CI
 env:
   # Setting an environment variable with the value of a configuration variable
   env_var: ${{ vars.ENV_VAR }}
+  appname: ${{ vars.APPLICATION_NAME }}
 
 # Controls when the workflow will run
 on:
