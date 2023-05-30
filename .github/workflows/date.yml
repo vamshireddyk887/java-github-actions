@@ -1,7 +1,7 @@
 name: CI
 env:
   # Setting an environment variable with the value of a configuration variable
-  env_var: ${{ vars.ENV_CONTEXT_VAR }}
+  env_var: ${{ vars.ENV_VAR }}
 
 # Controls when the workflow will run
 on:
@@ -26,8 +26,8 @@ jobs:
          ref: add1
       - run: |
            date > date.txt
-           git config user.name collinsws
-           git config user.email collinsws@no-reply.com
+           git config user.name collinsw
+           git config user.email collinsw@no-reply.com
            git add .
            git commit -m "date generated" .
            git push
