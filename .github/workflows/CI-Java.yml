@@ -1,0 +1,42 @@
+name: Java CI
+on: [push]
+jobs:
+  MavenBuild:
+     runs-on: ubuntu-latest
+     steps:
+      - name: Code Checkout
+        uses: actions/checkout@v3
+        
+      - name: Code compile
+        uses: actions/setup-java@v3
+        with:
+          distribution: "temurin"
+          java-version: '11'
+      -  run: 
+            mvn compile
+            
+      - name: Code Test
+        uses: actions/setup-java@v3
+        with:
+          distribution: "temurin"
+          java-version: '11'
+      -  run:  
+            mvn test
+      
+      - name: Code verify
+        uses: actions/setup-java@v3
+        with:
+          distribution: "temurin"
+          java-version: '11'
+      -  run:  
+            mvn verify
+            
+      - name: Code build
+        uses: actions/setup-java@v3
+        with:
+          distribution: "temurin"
+          java-version: '11'
+      -  run: 
+            mvn clean install
+
+            
