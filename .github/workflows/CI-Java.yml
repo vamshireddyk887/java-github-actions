@@ -30,7 +30,12 @@ jobs:
           java-version: '11'
       -  run:  
             mvn verify
-            
+    
+      - name: Set path to maven
+        id: mvn_path
+        run: |
+           echo "/opt/maven/bin" >> $GITHUB_ENV
+      
       - name: Code build
         uses: actions/setup-java@v3
         with:
