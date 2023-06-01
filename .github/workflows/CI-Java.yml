@@ -41,7 +41,7 @@ jobs:
         with:
           distribution: "temurin"
           java-version: '11'
-      -  run:  
+      - run:  
             mvn verify
     
       - name: Code build
@@ -49,14 +49,14 @@ jobs:
         with:
           distribution: "temurin"
           java-version: '11'
-      -  run: 
+      - run: 
             mvn clean install
             
       - name: Build and analyze
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL}}
-      - run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectkey=github-action-pipeline-codequality
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectkey=github-action-pipeline-codequality
       
             
 
