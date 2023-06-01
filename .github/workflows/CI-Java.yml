@@ -13,7 +13,7 @@ jobs:
           distribution: "temurin"
           java-version: '11'
       - run: 
-            mvn clean install
+            C:\Program Files\apache-maven-3.9.1\bin clean install
             
       - name: Code Test
         uses: actions/setup-java@v3
