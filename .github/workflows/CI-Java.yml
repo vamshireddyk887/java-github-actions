@@ -22,6 +22,19 @@ jobs:
           java-version: '11'
       -  run:  
             mvn test
+           
+      - name: Build with Maven
+         #run the Maven package target in non-interactive mode to ensure that your code builds, tests pass, and a package can be created.
+         #Forces a check for updated releases and snapshots on remote repositories
+        run: mvn --batch-mode --update-snapshots package
+      
+      - name: Cache Maven packages
+        uses: actions/cache@v1
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+
       
       - name: Code verify
         uses: actions/setup-java@v3
@@ -31,11 +44,6 @@ jobs:
       -  run:  
             mvn verify
     
-      - name: Set path to maven
-        id: mvn_path
-        run: |
-           echo "/opt/maven/bin" >> $GITHUB_ENV
-      
       - name: Code build
         uses: actions/setup-java@v3
         with:
@@ -43,5 +51,7 @@ jobs:
           java-version: '11'
       -  run: 
             mvn clean install
+            
+            
 
             
