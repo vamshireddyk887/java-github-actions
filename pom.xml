@@ -41,17 +41,9 @@
         </executions>
       </plugin>
 	    <plugin>
-        <artifactId>maven-clean-plugin</artifactId>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>sonar-maven-plugin</artifactId>
         <version>3.2.0</version>
-        <executions>
-          <execution>
-            <id>auto-clean</id>
-            <phase>initialize</phase>
-            <goals>
-              <goal>clean</goal>
-            </goals>
-          </execution>
-        </executions>
       </plugin>
     </plugins>
   </build>
