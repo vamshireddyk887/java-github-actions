@@ -4,7 +4,6 @@ on:
     # Sequence of patterns matched against refs/heads
     branches:    
       - main
-      - 'features/*'
 jobs:
   Mavenbuild:
     runs-on: ubuntu-latest
