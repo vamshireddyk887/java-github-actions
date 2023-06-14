@@ -17,8 +17,7 @@ jobs:
       with:
           distribution: "temurin"
           java-version: '11'
-          
-    -  run: |
+    - run: |
             pwd && ls -ltr 
             mvn clean install 
             
@@ -27,8 +26,7 @@ jobs:
       with:
           distribution: "temurin"
           java-version: '11'
-          
-    -  run: |
+    - run: |
             pwd && ls -ltr 
             mvn test
  
@@ -37,7 +35,6 @@ jobs:
           #GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-          
     - run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=practice-on-actions -Dsonar.projectName='practice-on-actions'
 
      
