@@ -16,7 +16,20 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-
+	
+<distributionManagement>
+    <repository>
+      <id>nexus</id>
+      <name>Releases</name>
+      <url>http://localhost:8081/repository/maven-releases/</url>
+    </repository>
+    <snapshotRepository>
+      <id>nexus</id>
+      <name>Snapshot</name>
+      <url>http://localhost:8081/repository/maven-snapshots/</url>
+    </snapshotRepository>
+  </distributionManagement>
+	
   <build>
     <finalName>helloworld</finalName>
     <plugins>
@@ -42,10 +55,56 @@
       </plugin>
     </plugins>
   </build>
-
+	
+<plugin>
+   <groupId>org.sonatype.plugins</groupId>
+   <artifactId>nexus-staging-maven-plugin</artifactId>
+   <version>1.5.1</version>
+   <executions>
+      <execution>
+         <id>default-deploy</id>
+         <phase>deploy</phase>
+         <goals>
+            <goal>deploy</goal>
+         </goals>
+      </execution>
+   </executions>
+   <configuration>
+      <serverId>nexus</serverId>
+      <nexusUrl>http://localhost:8081/nexus/</nexusUrl>
+      <skipStaging>true</skipStaging>
+   </configuration>
+</plugin>
+	 <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-release-plugin</artifactId>
+    <version>3.0.1</version>
+        <configuration>
+          
+</configuration>			  
+      </plugin>
+    </plugins>
+  </build>
+<distributionManagement>
+    <repository>
+      <id>nexus</id>
+      <name>Releases</name>
+      <url>http://localhost:8081/repository/maven-releases/</url>
+    </repository>
+    <snapshotRepository>
+      <id>nexus</id>
+      <name>Snapshot</name>
+      <url>http://localhost:8081/repository/maven-snapshots/</url>
+    </snapshotRepository>
+  </distributionManagement>
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
-	
+	<scm>
+   <connection>scm:git:https://github.com/vamshireddyk887/actionss.git</connection>
+   <url>https://github.com/vamshireddyk887/actionss</url>
+   <developerConnection>scm:git:https://github.com/vamshireddyk887/actionss.git</developerConnection>
+  <tag>helloworld-1.2</tag>
+  </scm>
 </project>
